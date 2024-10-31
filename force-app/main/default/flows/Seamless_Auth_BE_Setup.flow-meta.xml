@@ -227,7 +227,7 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>loop_thru_users.Id</leftValueReference>
+                <leftValueReference>fUser15Digit</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>$User.Id</elementReference>
@@ -242,8 +242,8 @@
             <name>All_Others</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>loop_thru_users.Id</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <leftValueReference>fUser15Digit</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>$User.Id</elementReference>
                 </rightValue>
@@ -296,6 +296,11 @@
         <name>fRunningUserSuggestion</name>
         <dataType>String</dataType>
         <expression>&quot;demoeng+jennifer_hynes_&quot;&amp;{!Slack_Org_Number}&amp;&quot;@slack-corp.com&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>fUser15Digit</name>
+        <dataType>String</dataType>
+        <expression>left({!loop_thru_users.Id},15)</expression>
     </formulas>
     <interviewLabel>Seamless Auth BE Setup {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Seamless Auth BE Setup</label>
