@@ -5,7 +5,7 @@
         <description>well create these</description>
         <name>Ad_PSA_to_Collection</name>
         <label>Ad PSA to Collection</label>
-        <locationX>616</locationX>
+        <locationX>748</locationX>
         <locationY>1514</locationY>
         <assignmentItems>
             <assignToReference>rcvPermSets</assignToReference>
@@ -93,7 +93,7 @@
     <assignments>
         <name>Assignment_for_permset_assignments</name>
         <label>Assignment for permset assignments</label>
-        <locationX>616</locationX>
+        <locationX>748</locationX>
         <locationY>1406</locationY>
         <assignmentItems>
             <assignToReference>recordPermSetAssignment.AssigneeId</assignToReference>
@@ -130,7 +130,7 @@
     <assignments>
         <name>Fed_ID_to_Users_for_Update</name>
         <label>Fed ID to Users for Update</label>
-        <locationX>528</locationX>
+        <locationX>660</locationX>
         <locationY>1082</locationY>
         <assignmentItems>
             <assignToReference>rcvUsersToUpdate</assignToReference>
@@ -163,7 +163,7 @@
         <description>dupe check</description>
         <name>Already_has_perm_set</name>
         <label>Already has perm set?</label>
-        <locationX>528</locationX>
+        <locationX>660</locationX>
         <locationY>1298</locationY>
         <defaultConnector>
             <targetReference>Assignment_for_permset_assignments</targetReference>
@@ -195,12 +195,12 @@
     <decisions>
         <name>Check_Edge_Cases</name>
         <label>Check Edge Cases</label>
-        <locationX>528</locationX>
+        <locationX>660</locationX>
         <locationY>782</locationY>
         <defaultConnector>
-            <targetReference>Assign_All_Email</targetReference>
+            <targetReference>Fed_ID_to_Users_for_Update</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>All Others</defaultConnectorLabel>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
         <rules>
             <name>Is_Elliot</name>
             <conditionLogic>and</conditionLogic>
@@ -238,11 +238,26 @@
             </connector>
             <label>Your Mapped User</label>
         </rules>
+        <rules>
+            <name>All_Others</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>loop_thru_users.Id</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$User.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_All_Email</targetReference>
+            </connector>
+            <label>All Others</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Weed_Out_Non_Salesforce_License</name>
         <label>Weed Out Non-Salesforce License</label>
-        <locationX>792</locationX>
+        <locationX>946</locationX>
         <locationY>674</locationY>
         <defaultConnector>
             <targetReference>loop_thru_users</targetReference>
@@ -331,7 +346,7 @@
     <recordLookups>
         <name>Check_if_Permset_already_assigned</name>
         <label>Check if Permset already assigned or wrong license</label>
-        <locationX>528</locationX>
+        <locationX>660</locationX>
         <locationY>1190</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -488,7 +503,7 @@
             <targetReference>Blank_Assign</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>currentItemFromSourceCollection</name>
         <dataType>SObject</dataType>
