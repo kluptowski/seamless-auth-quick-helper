@@ -1,0 +1,1 @@
+https://githubsfdeploy.herokuapp.com/?owner=kluptowski&repo=seamless-auth-quick-helper&ref=main
